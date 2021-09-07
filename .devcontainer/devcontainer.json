@@ -6,9 +6,7 @@
 	},
 	"settings": {},
 	"extensions": [
-		"dbaeumer.vscode-eslint",
-		"orta.vscode-jest",
-		"firsttris.vscode-jest-runner",
+		"dbaeumer.vscode-eslint",		
 		"esbenp.prettier-vscode",
 		"pkief.material-icon-theme",
 		"stevencl.adddoccomments",
