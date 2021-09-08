@@ -4,7 +4,11 @@ import Page from 'appmodel/page.model';
 
 @Injectable()
 export class PessoasService {
-  pessoasMap: Pessoa[] = [];
+  private pessoasMap: Pessoa[];
+  constructor() {
+    this.pessoasMap = [];
+  }
+
   listPessoas(page: number, size: number): Page<Pessoa> {
     const pageContent = this.pessoasMap.slice(page * size, page * size + size);
     return new Page<Pessoa>(
@@ -17,8 +21,7 @@ export class PessoasService {
 
   addPessoaObject(pessoa: Pessoa): Pessoa {
     pessoa.id = this.pessoasMap.length + 1;
-    pessoa = pessoa.withId(this.pessoasMap.length + 1);
-    this.pessoasMap.push(pessoa.withId(this.pessoasMap.length + 1));
+    this.pessoasMap.push(pessoa);
     return pessoa;
   }
 
@@ -41,8 +44,8 @@ export class PessoasService {
     return this.pessoasMap.find((p) => p.id === id);
   }
 
-  updatePessoa(pessoa: Pessoa): void {
-    this.pessoasMap.splice(pessoa.id - 1, 1, pessoa);
+  updatePessoa(id: number, pessoa: Pessoa): void {
+    this.pessoasMap.splice(id - 1, 1, pessoa);
   }
 
   removePessoa(id: number): void {

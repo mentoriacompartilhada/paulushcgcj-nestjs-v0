@@ -41,7 +41,7 @@ export class PessoasController {
   @HttpCode(HttpStatus.ACCEPTED)
   @Put(':id')
   updatePessoa(@Param('id') id: number, @Body() pessoa: Pessoa): void {
-    this.service.updatePessoa(pessoa.withId(id));
+    this.service.updatePessoa(id, pessoa);
   }
 
   @HttpCode(HttpStatus.NO_CONTENT)
